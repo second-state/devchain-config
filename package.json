@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "core-js": "^2.6.5",
+    "element-ui": "^2.8.2",
     "vue": "^2.6.10",
+    "vue-clipboard2": "^0.3.0",
     "vue-json-ui-editor": "^1.0.0"
   },
   "devDependencies": {

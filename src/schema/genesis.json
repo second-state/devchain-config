@@ -6,44 +6,48 @@
     "properties": {
       "genesis_time": {
         "type": "string",
-        "minLength": 8,
-        "maxLength": 80,
-        "title": "Genesis Time"
+        "minLength": 20,
+        "maxLength": 20,
+        "title": "Genesis Time",
+        "default": "0001-01-01T00:00:00Z"
       },
       "chain_id": {
         "type": "string",
-        "minLength": 8,
-        "maxLength": 80,
-        "title": "Chain ID"
+        "minLength": 4,
+        "maxLength": 8,
+        "title": "Chain ID",
+        "default": "local"
       },
       "validators": {
-        "title": "validators",
+        "title": "Validators",
         "description": "validators",
         "type": "object",
         "properties": {
           "pub_key": {
             "title": "pub_key",
             "description": "pub_key",
-            "type": "object",
+            "type": "array",
             "properties": {
                 "type": {
                     "type": "string",
                     "minLength": 8,
                     "maxLength": 80,
+                    "default": "tendermint/PubKeyEd25519",
                     "title": "type"
                   },
                   "value": {
                     "type": "string",
-                    "minLength": 8,
-                    "maxLength": 80,
+                    "minLength": 44,
+                    "maxLength": 44,
                     "title": "value"
                   }
             }
           },
           "power": {
             "type": "string",
-            "minLength": 8,
-            "maxLength": 80,
+            "minLength": 1,
+            "maxLength": 3,
+            "default": "10",
             "title": "power"
           },
           "shares": {
