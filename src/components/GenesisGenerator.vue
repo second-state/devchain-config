@@ -112,21 +112,6 @@ export default {
     },
   },
   methods: {
-    // submit(_e) {
-    //   this.$refs.JsonEditor.form().validate(valid => {
-    //     if (valid) {
-    //       // this.model contains the valid data according your JSON Schema.
-    //       // You can submit your model to the server here
-
-    //       // eslint-disable-next-line no-console
-    //       console.log('model', JSON.stringify(this.model));
-    //       this.$refs.JsonEditor.clearErrorMessage();
-    //     } else {
-    //       this.$refs.JsonEditor.setErrorMessage('Please fill out the required fields');
-    //       return false;
-    //     }
-    //   });
-    // },
 
     submit(_e) {
       this.$refs.JsonEditor.form().validate(valid => {
@@ -144,9 +129,6 @@ export default {
         }
       });
     },
-    // reset() {
-    //   this.$refs.JsonEditor.reset();
-    // },
   },
   components: { JsonEditor },
 };
