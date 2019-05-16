@@ -25,7 +25,7 @@
         "properties": {
           "pub_key": {
             "title": "pub_key",
-            "description": "pub_key",
+            "description": "",
             "type": "array",
             "properties": {
                 "type": {
