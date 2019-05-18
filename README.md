@@ -20,7 +20,7 @@ node devchain_cli.js
 ### Update Chain ID
 
 ```
-node devchain_cli.js --genesis_config=./genesis.json.template --chain_id=test --params.foundation_address=23 --validators.pub_key=test1 --validators.power=100 --validators.comp_rate=1/6
+node devchain_cli.js --genesis_config=./genesis.json.template --chain_id=test
 
 ```
 
