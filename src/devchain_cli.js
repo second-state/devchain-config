@@ -3,8 +3,8 @@ let jsonfile = require('jsonfile');
 let program = require('commander');
 
 program.version('0.1.0')
-    // .option('--from-genesis [fromGenesis]', 'from local genesis')
-    .option('--pub-key [pubKey]', 'public key of validator')
+    .option('--from-genesis [fromGenesis]', 'from local genesis')
+    .option('--pub-key [pubKey]', 'public key of validator', "")
     .parse(process.argv);
 
 var jsonContent = { 
@@ -58,16 +58,7 @@ var jsonContent = {
         cal_vp_interval: 1,
         cal_avg_staking_date_interval: 8640 } 
     }
-    console.log(JSON.stringify(jsonContent))
-// inquirer.prompt([
-//     {
-//         type: 'gas_price',
-//         name: 'gas_price',
-//         message: 'gas price',
-//         default: 2000000
-//     }
-// ]).then(answers => {
-//     jsonContent.params.gas_price = answers['gas_price'];
-//     console.log(jsonContent.params);
-//     jsonfile.writeFileSync(program.fromGenesis, jsonContent);
-// });
+
+    if (program.fromGenesis === undefined) console.log(JSON.stringify(jsonContent, null, 4));
+
+    if (program.fromGenesis !== undefined) console.log()
