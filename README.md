@@ -17,6 +17,12 @@ node devchain_cli.js --genesis_config=./genesis.json.template
 node devchain_cli.js
 ```
 
+### Upsert Validators(Update or Insert another validator, default only one validator)
+
+```
+node devchain_cli.js --genesis_config=./genesis.json.template --validators.1.pub_key=test1 --validators.1.power=101 --validators.2.pub_key=test2 --validators.1.power=102
+```
+
 ### Update Chain ID
 
 ```
