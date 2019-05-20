@@ -6,6 +6,24 @@ const argv = require("yargs")
 
 var jsonContent = null;
 
+var defaultValidator = 
+ {
+    pub_key: {
+      type: "tendermint/PubKeyEd25519",
+      value: ""
+    },
+    power: "10",
+    shares: 1000000,
+    name: "",
+    address: "0x7eff122b94897ea5b0e2a9abf47b86337fafebdc",
+    comp_rate: "1/5",
+    max_amount: 10000000,
+    website: "",
+    location: "",
+    email: "",
+    Profile: ""
+  }
+
 function loopUpdateJsonValue(argvs, paramters) {
   for (let key in argvs) {
     if (key in paramters) {
@@ -80,11 +98,19 @@ if (argv.chain_id !== undefined) {
 
 if (argv.validators !== undefined) {
   var validator_params = argv.validators;
-  if (validator_params.pub_key !== undefined) {
-    jsonContent.validators[0].pub_key.value = validator_params.pub_key;
-    delete validator_params.pub_key;
+  const validator_size = jsonContent.validators.length
+
+  for (let key in validator_params) {
+      if (key > validator_size - 1) {
+          jsonContent.validators.push(defaultValidator);
+      } 
+
+    if (validator_params[key].pub_key !== undefined) {
+        jsonContent.validators[key].pub_key.value = validator_params[key].pub_key;
+        delete validator_params[key].pub_key;
+      }
+      loopUpdateJsonValue(validator_params[key], jsonContent.validators[key]);
   }
-  loopUpdateJsonValue(argv.validators, jsonContent.validators[0]);
 }
 
 if (argv.params !== undefined) {
