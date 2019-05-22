@@ -44,10 +44,10 @@ node devchain_cli.js --type genesis --config_path=./genesis.json.template --para
 ### Configuration of Node(config.toml)
 
 ```
-// with custom path of genesis.json
+// with custom path of cofig.toml
 node devchain_cli.js --type config --config_path=./config.toml.template
 
-// default genesis.json template
+// default config.toml template
 node devchain_cli.js --type config
 ```
 
