@@ -1,27 +1,27 @@
 /* eslint-disable no-console */
 let jsonfile = require("jsonfile");
 let toml = require("toml-patch");
-var fs = require("fs");
+let fs = require("fs");
 
 const argv = require("yargs")
-    // .string("validators.power")
+// .string("validators.power")
     .string("params.foundation_address").argv;
 
 function loopUpdateJsonValue(argvs, paramters) {
     for (let key in argvs) {
         if ((key !== "_" || key === null) && key in paramters) {
             if (key === "power") {
-                paramters[key]=argvs[key].toString(10);
-            }else{
+                paramters[key] = argvs[key].toString(10);
+            } else {
                 paramters[key] = argvs[key];
             }
         }
     }
 }
 
-var configPath = null;
-var configContent = null;
-var outputContent = null;
+let configPath = null;
+let configContent = null;
+let outputContent = null;
 
 const type = argv.type;
 delete argv.type;
@@ -38,7 +38,7 @@ if (type === "genesis") {
     }
 
     if (argv.validators !== undefined) {
-        var validator_params = argv.validators;
+        let validator_params = argv.validators;
         const validator_size = configContent.validators.length;
 
 
@@ -85,8 +85,8 @@ if (type === "genesis") {
             ? "./config.toml.template"
             : argv.config_path;
 
-    var existing = fs.readFileSync(configPath, "utf-8");
-    var parsed = toml.parse(existing);
+    let existing = fs.readFileSync(configPath, "utf-8");
+    let parsed = toml.parse(existing);
     loopUpdateJsonValue(argv, parsed);
     outputContent = toml.patch(existing, parsed);
 } else {
