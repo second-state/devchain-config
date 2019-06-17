@@ -1,10 +1,5 @@
 # devchain-config
 
-## CLI
-
-```
-cd src/
-```
 ### Configuration of Genesis (genesis.json)
 
 ```
