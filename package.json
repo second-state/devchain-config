@@ -1,9 +1,11 @@
 {
   "name": "devchain-config",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "configuration command line tool for devchain of secondstate",
   "main": "index.js",
-  "bin": {"devchain-config": "./index.js"},
+  "bin": {
+    "devchain-config": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
