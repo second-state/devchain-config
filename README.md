@@ -20,14 +20,14 @@ node index.js --type genesis --config_path ./genesis.json.template --validators.
 #### Update Chain ID
 
 ```
-node index.js --type genesis --config_path ./genesis.json.template --chain_id test --params.foundation_address 23 --validators.pub_key test1 --validators.power 100 --validators.comp_rate 1/6
+node index.js --type genesis --config_path ./genesis.json.template --chain_id test --params.foundation_address 23 --validators.1.pub_key test1 --validators.1.power 100 --validators.1.comp_rate 1/6
 
 ```
 
 #### Update Validators Parameters
 
 ```
-node index.js --type genesis --config_path ./genesis.json.template --validators.pub_key testzt3RvqxU7wooagyTygEjZHnHUr0g6Z3T/gWPnh0  --validators.power 1234
+node index.js --type genesis --config_path ./genesis.json.template --validators.1.pub_key testzt3RvqxU7wooagyTygEjZHnHUr0g6Z3T/gWPnh0  --validators.1.power 1234
 ```
 
 #### Update Params
