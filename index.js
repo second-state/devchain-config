@@ -2,22 +2,13 @@
 let jsonfile = require("jsonfile");
 let toml = require("toml-patch");
 let fs = require("fs");
+let lodash = require("lodash");
 
 const argv = require("yargs")
-// .string("validators.power")
     .string("params.foundation_address").argv;
 
-function loopUpdateJsonValue(argvs, paramters) {
-    for (let key in argvs) {
-        if ((key !== "_" || key === null) && key in paramters) {
-            if (key === "power") {
-                paramters[key] = argvs[key].toString(10);
-            } else {
-                paramters[key] = argvs[key];
-            }
-        }
-    }
-}
+delete argv['_'];
+delete argv['$0'];
 
 let configPath = null;
 let configContent = null;
@@ -69,13 +60,12 @@ if (type === "genesis") {
                 delete validator_params[key].pub_key;
             }
 
-            loopUpdateJsonValue(validator_params[key], configContent.validators[key]);
-
+            lodash.merge(configContent.validators[key], validator_params[key]);
         }
     }
 
     if (argv.params !== undefined) {
-        loopUpdateJsonValue(argv.params, configContent.params);
+        lodash.merge(configContent.params, argv.params);
     }
 
     outputContent = JSON.stringify(configContent, null, 4);
@@ -85,9 +75,10 @@ if (type === "genesis") {
             ? "./config.toml.template"
             : argv.config_path;
 
+
     let existing = fs.readFileSync(configPath, "utf-8");
     let parsed = toml.parse(existing);
-    loopUpdateJsonValue(argv, parsed);
+    lodash.merge(parsed, argv);
     outputContent = toml.patch(existing, parsed);
 } else {
     console.log("Type parameter is wrong");
